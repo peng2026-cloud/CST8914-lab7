@@ -111,7 +111,9 @@
               $referencedElement = $input;
             }
       // R.G. hint: fix next line ;)
-            $error = $('<a>' + message + '</a>');
+      // add class="error" so the final check can find the error links.
+      // add href link with id
+            $error = $('<a class="error" href="#' + $referencedElement.attr('id') + '">' + message + '</a>');
             $error.click(function (e) {
               // If we rely on the link's href pointing to the input's ID, it doesn't trigger forms mode in screen readers
               $referencedElement.focus();
@@ -122,7 +124,8 @@
       
             if ($(':not(form):focus').length === 0) {
               // See https://stackoverflow.com/questions/46134247/jquery-setting-focus-doesnt-work-in-ie11/
-            
+              // moving focus to the error part
+              $('fieldset.errors').attr('tabindex', '-1').focus();
             }
           } else {
             if ($input.is(':checkbox')) {
