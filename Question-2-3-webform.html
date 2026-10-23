@@ -28,24 +28,43 @@
     <body>
         <h1>Feedback form</h1>
     <form>
+      <!-- add note about required fields -->
+      <p>Fields marked with <span class="required">*</span> are required.</p>
         <div class="control">
-          <label>Full name <span class="required">*</span></label><input id="name" name="name" type="text" />
+          <!-- add for attribute to label -->
+           <!-- add aria-required="true" to allow screen readers to identify required fields -->
+          <label for="name">Full name <span class="required">*</span></label><input id="name" aria-required="true" name="name" type="text" />
         </div>
         <div class="control">
-          <label>Biography</label><textarea id="biography" name="biography" type="text"></textarea>
-          <span>Include examples on your skills in JavaScript.</span>
+          <!-- add for attribute to label -->
+           <!-- add aria-required="true" to allow screen readers to identify required fields, delete type="text, because attribute “type” not allowed on element “textarea”" -->
+            <!-- add <span class="required">*</span> making required -->
+           <label for="biography">Biography<span class="required">*</span></label>
+           <!-- add aria-describedby attribute for accessibility -->
+           <textarea id="biography" aria-required="true" name="biography" aria-describedby="biography-hint"></textarea>
+          <span id="biography-hint">Include examples on your skills in JavaScript.</span>
         </div>
         
-          <div>Gender</div>
+        <!-- add fieldset making gender as a group -->
+        <fieldset>
+          <!-- change legend to reflect the title -->
+           <!-- add <span class="required">*</span> making required-->
+          <legend>Gender<span class="required">*</span></legend>
           <div class="control">
-            <input id="gender_male" name="gender" type="radio" value="male" /><label>Male</label>
+            <!-- add for attribute to label -->
+            <input id="gender_male" name="gender" type="radio" value="male" /><label for="gender_male">Male</label>
           </div>
           <div class="control">
-            <input id="gender_female" name="gender" type="radio" value="female" /><label>Female</label>
+            <!-- add for attribute to label -->
+            <input id="gender_female" name="gender" type="radio" value="female" /><label for="gender_female">Female</label>
           </div>
+        </fieldset>
         
         <div class="control">
-          <input id="accept_agbs" name="accept_agbs" type="checkbox" value="1" /><label>I accept the terms and conditions</label>
+          <!-- add for attribute to label -->
+           <!-- add aria-required="true" to allow screen readers to identify required fields -->
+            <!-- add <span class="required">*</span> making required -->
+          <input id="accept_agbs" aria-required="true" name="accept_agbs" type="checkbox" value="1" /><label for="accept_agbs">I accept the terms and conditions<span class="required">*</span></label>
         </div>
         <div class="control">
           <input name="validate" type="hidden" value="1" /><input type="submit" value="Register" />
